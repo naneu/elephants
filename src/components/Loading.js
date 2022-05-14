@@ -5,7 +5,7 @@ function Loading() {
   return (
       <ReactLoading
         type={"spinningBubbles"}
-        color={"red"}
+        color={"#ed693a"}
         height={"10%"}
         width={"10%"}
         className="loader"
