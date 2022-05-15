@@ -264,3 +264,44 @@ Elephant
     grid-template-columns: repeat(auto-fill, minmax(338.8px, 1fr));
   }
 }
+
+.elephants-section {
+  text-align: center;
+}
+.elephant-item {
+  width: var(--smallWidth);
+  max-width: var(--fullWidth);
+  margin: 0 auto;
+  text-align: left;
+}
+.elephant-item img {
+  border-radius: var(--mainBorderRadius);
+}
+.elephant-item p {
+  font-weight: bold;
+  text-transform: capitalize;
+  line-height: 1.8;
+}
+.elephant-item span {
+  margin-right: 0.5rem;
+}
+.elephant-item-data {
+  background: var(--primaryLightColor);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--mainBorderRadius);
+  color: var(--primaryColor);
+}
+.elephant-item-info {
+  padding-top: 2rem;
+}
+@media screen and (min-width: 992px) {
+  .elephant-item {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .elephant-item-info {
+    padding-top: 0;
+  }
+}

@@ -13,7 +13,7 @@ function Elephants() {
       <h2 className="section-title">Elephants</h2>
       <div className="elephants-center">
         {elephants.map((item) => {
-          return <Elephant key={item._id} {...item} />;
+          return <Elephant key={item.index} {...item} />;
         })}
       </div>
     </section>
