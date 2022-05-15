@@ -4,7 +4,6 @@ import Loading from "../components/Loading";
 import Elephants from "../components/Elephants";
 
 function Home() {
-
   return (
     <div>
       <Elephants />

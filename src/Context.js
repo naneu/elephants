@@ -1,4 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import { filter } from "lodash";
 
 const url = "https://elephant-api.herokuapp.com/elephants";
 const proxy = "https://api.allorigins.win/get?url=";
@@ -9,25 +11,26 @@ function AppProvider({ children }) {
   const [elephants, setElephants] = useState([]);
 
   const getElephants = async () => {
-      setLoading(true)
+    setLoading(true);
     try {
-      const response = await fetch(proxy + url);
-      const data = await response.json();
-      const elephantsData = JSON.parse(data.contents);
-      setLoading(false)
-      setElephants(elephantsData)
-      
-
+      const response = await axios.get(proxy + url);
+      const data = await response.data;
+      const results = JSON.parse(data.contents);
+      const elephantsData = filter(results, "index");
+      setLoading(false);
+      setElephants(elephantsData);
     } catch (error) {
-        setLoading(false)
+      setLoading(false);
       console.log(error);
     }
   };
   useEffect(() => {
-    getElephants()
-  }, [])
+    getElephants();
+  }, []);
   return (
-    <AppContext.Provider value={{ loading,elephants }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ loading, elephants }}>
+      {children}
+    </AppContext.Provider>
   );
 }
 

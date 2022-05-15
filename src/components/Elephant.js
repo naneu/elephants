@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-function Elephant({ id, name, species, sex, image,affiliation, dob,note, wikilink, dod  }) {
+function Elephant({ _id, name, species, sex, image,affiliation, dob,note, wikilink, dod  }) {
   return (
     <article className="elephant">
       <div className="img-container">
@@ -12,7 +12,7 @@ function Elephant({ id, name, species, sex, image,affiliation, dob,note, wikilin
         <h3>{name}</h3>
         <h4>{affiliation}</h4>
         <p>{sex}</p>
-        <Link to={`/elephant/${id}`} className='btn btn-primary btn-details'>Details</Link>
+        <Link to={`/elephant/${_id}`} className='btn btn-primary btn-details'>Details</Link>
       </div>
     </article>
   );

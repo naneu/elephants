@@ -5,7 +5,6 @@ import { useGlobalContext } from "../Context";
 
 function Elephants() {
   const { elephants, loading } = useGlobalContext();
-  console.log(elephants);
   if (loading) {
     return <Loading />;
   }
@@ -14,7 +13,7 @@ function Elephants() {
       <h2 className="section-title">Elephants</h2>
       <div className="elephants-center">
         {elephants.map((item) => {
-          return <Elephant key={item.id} {...item} />;
+          return <Elephant key={item._id} {...item} />;
         })}
       </div>
     </section>
