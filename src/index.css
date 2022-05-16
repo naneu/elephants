@@ -319,3 +319,17 @@ About
   font-weight: 400;
   letter-spacing: 2px;
 }
+
+/* 
+====== 
+Error
+======
+*/
+.error-page {
+  display: flex;
+  justify-content: center;
+}
+.error-container {
+  text-align: center;
+  text-transform: capitalize;
+}
