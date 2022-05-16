@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { filter } from "lodash";
 import Loading from "../components/Loading";
 import { useParams, Link } from "react-router-dom";
+import { useGlobalContext } from "../Context";
 
 function SingleElephant() {
-  const { name } = useParams();
-  console.log(name);
+  const { id } = useParams();
+  const eleIndex = parseInt(id)
+  const { elephants } = useGlobalContext();
   const [loading, setLoading] = useState(false);
-  const [elephant, setElephant] = useState(null);
+  const [elephant,setElephant] = useState(null)
 
-  
-  const url = `https://elephant-api.herokuapp.com/elephants/name/?${name}`;
-  const proxy = "https://api.allorigins.win/get?url=";
   useEffect(() => {
     setLoading(true);
     async function getElephantDetails() {
       try {
-        const response = await axios.get(proxy + url);
-        const data = await response.data;
-        const results = JSON.parse(data.contents);
+        const data = filter(elephants,['index', eleIndex])
+        const singleData = data[0];
         const {
           index,
           name,
@@ -31,7 +30,7 @@ function SingleElephant() {
           wikilink,
           image,
           note,
-        } = results;
+        } = singleData;
         const newElephant = {
           index,
           name,
@@ -52,7 +51,7 @@ function SingleElephant() {
       setLoading(false);
     }
     getElephantDetails();
-  }, [name]);
+  }, [eleIndex]);
 
   if (loading) {
     return <Loading />;
@@ -61,7 +60,6 @@ function SingleElephant() {
     return <h3 className="section-title">no elephant to display</h3>;
   } else {
     const {
-      index,
       name,
       affiliation,
       species,
@@ -86,7 +84,8 @@ function SingleElephant() {
               <span className="elephant-item-data">name :</span> {name}
             </p>
             <p>
-              <span className="elephant-item-data">affiliation :</span> {affiliation}
+              <span className="elephant-item-data">affiliation :</span>{" "}
+              {affiliation}
             </p>
             <p>
               <span className="elephant-item-data">species :</span> {species}
@@ -95,7 +94,8 @@ function SingleElephant() {
               <span className="elephant-item-data">sex :</span> {sex}
             </p>
             <p>
-              <span className="elephant-item-data">fictional :</span> {fictional}
+              <span className="elephant-item-data">fictional :</span>{" "}
+              {fictional}
             </p>
             <p>
               <span className="elephant-item-data">dob :</span> {dob}
@@ -107,7 +107,7 @@ function SingleElephant() {
               <span className="elephant-item-data">note :</span> {note}
             </p>
             <p>
-              <span className="elephant-item-data">wikilink :</span> {wikilink}
+              <span className="elephant-item-data">wikilink :</span> <a href={wikilink}>{wikilink}</a>
             </p>
           </div>
         </div>
