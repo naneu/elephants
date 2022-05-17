@@ -199,13 +199,27 @@ Elephants Lists
 .section {
   padding: 5rem 0;
 }
+.header-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-section input{
+  width: 300px ;
+  height: 32px;
+  font-size: 18px;
+  padding-left: 10px;
+  margin-bottom: 3.5rem;
+  margin-top: 1rem;
+}
 .section-title {
   font-size: 2rem;
   text-transform: capitalize;
   letter-spacing: var(--mainSpacing);
-  text-align: center;
+  /* text-align: center; */
   margin-bottom: 3.5rem;
   margin-top: 1rem;
+  margin-right: 300px;
 }
 .elephants-center {
   width: var(--smallWidth);
