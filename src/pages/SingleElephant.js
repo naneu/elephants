@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { filter } from "lodash";
 import Loading from "../components/Loading";
 import { useParams, Link } from "react-router-dom";
@@ -51,7 +50,7 @@ function SingleElephant() {
       setLoading(false);
     }
     getElephantDetails();
-  }, [eleIndex]);
+  }, [elephants,eleIndex]);
 
   if (loading) {
     return <Loading />;
